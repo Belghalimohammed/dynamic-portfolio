@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { useToast } from '../../hooks/use-toast';
+import { portfolioAPI } from '../../services/api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,9 +29,8 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock form submission - will be replaced with actual API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
+      await portfolioAPI.submitContact(formData);
       
       toast({
         title: "Message sent successfully!",
@@ -59,8 +59,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'alex@example.com',
-      link: 'mailto:alex@example.com'
+      content: 'hello@example.com',
+      link: 'mailto:hello@example.com'
     },
     {
       icon: Phone,
